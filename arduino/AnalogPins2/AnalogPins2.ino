@@ -27,10 +27,11 @@ void loop() {
       sensorValue = analogRead(analog_pins[checkPin]);
 
       if(sensorValue > sensitivity) {
-        //Serial.print("CONNECTION ");
+        Serial.print("CONNECTION ");
         Serial.print(thisPin);
         Serial.print(" ");
-        Serial.println(checkPin);
+        Serial.print(checkPin);
+        Serial.println();
     }
     
       delay(delayTime);        // delay in between reads for stability
