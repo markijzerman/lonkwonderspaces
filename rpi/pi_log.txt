@@ -1,6 +1,3 @@
 * Stretch (no apps) 2018-11-13-raspbian-stretch.zip
 * ssh file put on img
 * connect on local internet with ethernet.
-* changed pw to welikeball00ns
-* changed hostname to studiolonk
-* ssh -XY pi@studiolonk.local
