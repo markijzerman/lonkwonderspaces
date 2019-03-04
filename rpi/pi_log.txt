@@ -1,3 +1,11 @@
 * Stretch (no apps) 2018-11-13-raspbian-stretch.zip
 * ssh file put on img
 * connect on local internet with ethernet.
+* VNC aangezet (LATER UITZETTEN!)
+* sudo apt-get install arduino
+* to make arduino code work properly, ground pi ground pin to earth.
+
+* do this to install pd: http://www.haigarmen.com/installing-the-latest-puredata-on-a-raspberry-pi/
+
+* pip3 install python-osc
+* pd 0.49 osc connection via https://github.com/danomatika/BangYourHead
