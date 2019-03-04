@@ -1,22 +1,35 @@
+from time import sleep
+import OSC
 import serial
-import argparse
-from binascii import unhexlify
-from pythonosc import osc_message_builder
-from pythonosc import udp_client
+import re
 
-arduino = serial.Serial("/dev/ttyUSB0",timeout=1,baudrate=115200)
+c = OSC.OSCClient()
+c.connect(('127.0.0.1', 5454))
+oscmsg = OSC.OSCMessage()
 
-# OSC parser stuff
-parser = argparse.ArgumentParser()
-parser.add_argument("--ip", default="localhost")
-parser.add_argument("--port", type=int, default=5454)
-args = parser.parse_args()
+ser = serial.Serial('/dev/ttyUSB0', 115200)
 
-client = udp_client.SimpleUDPClient(args.ip, args.port)
-
+pattern = re.compile("^msg=")
+sleep(1)
 
 while True:
-        if arduino.read():
-                reading = str(arduino.readline().decode("utf-8"))
-                print(reading)
-                client.send_message("/arduino", reading)
+	t = 0
+	while t == 0:
+		check = ser.readline()
+		matched = pattern.match(check)
+		if matched:
+			result = check.split(" ")
+			t = 1
+		else:
+			print('***DROPPED - GARBAGE DETECTED***')
+
+
+	oscmsg = OSC.OSCMessage()
+	oscmsg.setAddress("/val1")
+	oscmsg.append(int(result[1]))
+	c.send(oscmsg)
+
+	oscmsg = OSC.OSCMessage()
+	oscmsg.setAddress("/val2")
+	oscmsg.append(int(result[2]))
+	c.send(oscmsg)

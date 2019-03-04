@@ -4,7 +4,7 @@ int delayTime = 2;
 int sensitivity = 350; // tried & tested with 350 on macbook & pi with ground
 int thisPin = 0;
 int checkPin = 0;
-int sensorValue = 0;
+int sensorValue = 0; 
 int maxPin = 4;
 
 void setup() {
@@ -27,11 +27,10 @@ void loop() {
       sensorValue = analogRead(analog_pins[checkPin]);
 
       if(sensorValue > sensitivity) {
-        Serial.print("CONNECTION ");
+        Serial.print("msg= ");
         Serial.print(thisPin);
         Serial.print(" ");
-        Serial.print(checkPin);
-        Serial.println();
+        Serial.println(checkPin);
     }
     
       delay(delayTime);        // delay in between reads for stability
