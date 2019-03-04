@@ -25,11 +25,11 @@ while True:
 
 
 	oscmsg = OSC.OSCMessage()
-	oscmsg.setAddress("/val1")
+	oscmsg.setAddress("/status")
 	oscmsg.append(int(result[1]))
 	c.send(oscmsg)
 
 	oscmsg = OSC.OSCMessage()
-	oscmsg.setAddress("/val2")
+	oscmsg.setAddress("/connection")
 	oscmsg.append(int(result[2]))
 	c.send(oscmsg)

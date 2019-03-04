@@ -31,16 +31,20 @@ void loop() {
       if((sensorValue > sensitivity) && (connectionArray[connectionCount]!=1)) {
         connectionArray[connectionCount] = 1;
         Serial.print("msg= ");
-        Serial.print("connect ");
-        Serial.println(connectionCount);
+        Serial.print(connectionCount);
+        Serial.print(" ");
+        Serial.println("1");// 1 for connect
+        
     }
 
 
-      if((sensorValue < sensitivity) && (connectionArray[connectionCount]!=0)) {
+      if((sensorValue < sensitivity)) {
         connectionArray[connectionCount] = 0;
         Serial.print("msg= ");
-        Serial.print("disconnect ");
-        Serial.println(connectionCount);
+        Serial.print(connectionCount);
+        Serial.print(" ");
+        Serial.println("0");// 0 for disconnect
+        
       }
        delay(delayTime);        // delay in between reads for stability
     }
